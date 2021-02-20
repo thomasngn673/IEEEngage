@@ -6,11 +6,15 @@ import json
 #source ./env/bin/activate # command line past to activate virtual environment
 #change directory: cd /Users/thomasnguyen/Desktop/Programming/Python/ieee
 
+#Currently to retreive file must use direct path. 
+# Find where your file is located then copy pathway and put into where it says pd.read_excel 
+# NOTE you may have to pip install something to read the excel sheet. I think its pyexcel. Need to double check
+
 print("Reading Excel file...")
 print("Year: 2017-2018...")
 print('\n')
 pd.set_option('display.max_rows',None,'display.max_columns',None) # display rows and columns up to a limit of 'None' (no limit)
-df = pd.read_excel('IEEE_Member_App_17-18.xlsx', sheet_name='Membership',usecols=['Last Name', 'First Name','Major (for statistical purposes only)', 'Classification (for statistical purposes only)','Total points'],nrows=235) # read excel file into dataframe variable 'df'
+df = pd.read_excel("D:\\Coding\\IEEE\\Data analytics\\Group\\Python\\ieee\IEEE_Member_App_17-18.xlsx", sheet_name='Membership',usecols=['Last Name', 'First Name','Major (for statistical purposes only)', 'Classification (for statistical purposes only)','Total points'],nrows=90) # read excel file into dataframe variable 'df'
 
 # Print name of columns that are loaded in
 cols = list(df.columns) # convert the columns into a list
@@ -21,13 +25,15 @@ print('\n')
 # Determine membership classification composition & number of points 
 class_list = df['Classification (for statistical purposes only)'].to_list() # converts membership classification column into a list
 points_list = df['Total points'].to_list() # converts total points column into a list
-fm = 0
-sm = 0
-jn = 0
-sr = 0
-gd = 0
-nl = 0
-fm_tp = 0.0
+#Classification
+fm = 0 #Freshmen    
+sm = 0 #Sophmore
+jn = 0 #Junior
+sr = 0 #Senior
+gd = 0 #Graduate
+nl = 0 # Null < -- for errors in the excel sheet
+#Total points 
+fm_tp = 0.0 
 sm_tp = 0.0
 jn_tp = 0.0
 sr_tp = 0.0
