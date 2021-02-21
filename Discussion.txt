@@ -1,0 +1,4 @@
+Discussion
+
+How to make this scalabble? 
+Are we going to create a new program for each and then code it?
