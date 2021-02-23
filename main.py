@@ -10,12 +10,19 @@ import json
 # Find where your file is located then copy pathway and put into where it says pd.read_excel 
 # NOTE you may have to pip install something to read the excel sheet. I think its pyexcel. Need to double check
 
+# ALL PURPOSE FILE
+
 print("Reading Excel file...")
 print("Year: 2017-2018...")
 print('\n')
 pd.set_option('display.max_rows',None,'display.max_columns',None) # display rows and columns up to a limit of 'None' (no limit)
-df = pd.read_excel("D:\\Coding\\IEEE\\Data analytics\\Group\\Python\\ieee\IEEE_Member_App_17-18.xlsx", sheet_name='Membership',usecols=['Last Name', 'First Name','Major (for statistical purposes only)', 'Classification (for statistical purposes only)','Total points'],nrows=90) # read excel file into dataframe variable 'df'
 
+excel_sheet = input('Please insert your excel sheet')
+try : # Trys to read the input 
+    #eventually will change to take the dataframe input from the server 
+    df = pd.read_excel("D:\\Coding\\IEEE\\Data analytics\\Group\\Python\\ieee\IEEE_Member_App_17-18.xlsx", sheet_name='Membership',usecols=['Last Name', 'First Name','Major (for statistical purposes only)', 'Classification (for statistical purposes only)','Total points'],nrows=90) # read excel file into dataframe variable 'df'
+except:  #If try fails then goes to except
+    print('Invalid sheet')
 # Print name of columns that are loaded in
 cols = list(df.columns) # convert the columns into a list
 print("The available columns are:")
@@ -44,30 +51,50 @@ class_list_total = 0
 # Error encountered (resolved):
 # print(points_list,"\n") # What is in the element of the list of an empty excel cell? Answer: 'nan'
 # print(type(points_list[3])) # What type of variable is 'nan'? Answer: float --> must convert element to string to use ==
-for i in range(len(points_list)):
-    if str(points_list[i]) == 'nan':
-        points_list[i] = 0.0
+def classification_calculator(): # This function will calculate the point totals
+    for i in range(len(points_list)):
+        if str(points_list[i]) == 'nan':
+            points_list[i] = 0.0
 
-for i in range(len(class_list)):
-    if class_list[i] == 'Freshman':
-        fm = fm + 1
-        fm_tp = fm_tp + points_list[i]
-    if class_list[i] == 'Sophomore':
-        sm = sm + 1
-        sm_tp = sm_tp + points_list[i]
-    if class_list[i] == 'Junior':
-        jn = jn + 1
-        jn_tp = jn_tp + points_list[i]
-    if class_list[i] == 'Senior':
-        sr = sr + 1
-        sr_tp = sr_tp + points_list[i]
-    if class_list[i] == 'Graduate':
-        gd = gd + 1
-        gd_tp = gd_tp + points_list[i]
-    if str(class_list[i]) == 'nan':
-        nl = nl + 1
-        nl_tp = nl_tp + points_list[i]
+    for i in range(len(class_list)):
+        if class_list[i] == 'Freshman':
+            fm = fm + 1
+            fm_tp = fm_tp + points_list[i]
+        if class_list[i] == 'Sophomore':
+            sm = sm + 1
+            sm_tp = sm_tp + points_list[i]
+        if class_list[i] == 'Junior':
+            jn = jn + 1
+            jn_tp = jn_tp + points_list[i]
+        if class_list[i] == 'Senior':
+            sr = sr + 1
+            sr_tp = sr_tp + points_list[i]
+        if class_list[i] == 'Graduate':
+            gd = gd + 1
+            gd_tp = gd_tp + points_list[i]
+        if str(class_list[i]) == 'nan':
+            nl = nl + 1
+            nl_tp = nl_tp + points_list[i]
 
+    max_p = max(fm_tp, sm_tp, jn_tp, sr_tp, gd_tp) # Calculates what class has the highest pt
+    most_active_class = ''
+    if max_p == fm_tp:
+        most_active_class = 'FRESHMEN'
+    if max_p == sm_tp:
+        most_active_class = 'SOPHOMORES'
+    if max_p == jn_tp:
+        most_active_class = 'JUNIORS'
+    if max_p == sr_tp:
+        most_active_class = 'SENIORS'
+    if max_p == gd_tp:
+        most_active_class = 'GRADUATES'
+    if max_p == nl_tp:
+        most_active_class = 'NOT LISTED'
+
+def mActiveclass ():
+    return ("MOST ACTIVE CLASS:",most_active_class)
+    
+print('\n')
 print("Number of freshmen:",fm)
 print("Number of sophomores:",sm)
 print("Number of juniors:",jn)
@@ -81,22 +108,8 @@ print("Total points for sophmores:",sm_tp)
 print("Total points for juniors:",jn_tp)
 print("Total points for seniors:",sr_tp)
 print("Total points for graduates:",gd_tp)
-max_p = max(fm_tp, sm_tp, jn_tp, sr_tp, gd_tp)
-most_active_class = ''
-if max_p == fm_tp:
-    most_active_class = 'FRESHMEN'
-if max_p == sm_tp:
-    most_active_class = 'SOPHOMORES'
-if max_p == jn_tp:
-    most_active_class = 'JUNIORS'
-if max_p == sr_tp:
-    most_active_class = 'SENIORS'
-if max_p == gd_tp:
-    most_active_class = 'GRADUATES'
-if max_p == nl_tp:
-    most_active_class = 'NOT LISTED'
-print("MOST ACTIVE CLASS:",most_active_class)
-print('\n')
+
+
 
 # Determine membership major composition
 # https://www.geeksforgeeks.org/python-add-the-occurrence-of-each-number-as-sublists/

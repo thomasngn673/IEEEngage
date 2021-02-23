@@ -1,4 +1,41 @@
 Discussion
 
-How to make this scalabble? 
+How to make this scalabble?
+- How to ask for excel sheet as an input 
+ - ans: Server gonna give us dataframe
 Are we going to create a new program for each and then code it?
+
+
+DATA VISUILIZATION 
+
+- bar graph what and how displayed
+   - Speak with gnat on what you need from program to dispaly 
+   - What kind of graphs do we want 
+       - Event type vs attendance 
+            - what percent of people attend the first general meeting , then second general meeting. 
+
+Ideas: 
+
+create indiviual functions for each part for easier access
+
+FOR CHRIS REMINDER: 
+Add a member ship pt column - How much the event it worth
+- Able to refer to timmy and it adds up all the events he went to 
+
+
+TO DO: 
+
+Put things in indivual functions to run calculations 
+
+figure out what type of graphs . How to display bar graph for example
+- Variation of bar graphs
+
+
+
+example graph
+
+------
+|     |----
+|     |   |---
+|     |   |  |
+|     |   |  |
