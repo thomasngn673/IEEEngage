@@ -1,0 +1,12 @@
+Intended Functionality:
+1. User clicks on Data Analytics tab --> Data Analytics Home Screen tab displayed
+2. User is presented with 2 drop down menus [CAN DIVERSIFY IN BETA VERSION]
+          (1) Year
+          (2) List of events in that year
+3. User selects both criteria and then clicks buttom labeled 'Generate analytics'
+4. First graph: general graph with x-axis being number of participants
+5. Graph will have 2 check boxes on the side with the option to check either check box at a time
+          (1) Major type
+          (2) Classification
+6. Checking either box will close the first graph and generate a new graph
+7. User will click the 'Back' button to return to the home screen
