@@ -4,7 +4,7 @@ Intended Functionality:
           (1) Year
           (2) List of events in that year
 3. User selects both criteria and then clicks buttom labeled 'Generate analytics'
-4. First graph: general graph with x-axis being number of participants
+4. First graph: general graph with y-axis being number of participants
 5. Graph will have 2 check boxes on the side with the option to check either check box at a time
           (1) Major type
           (2) Classification
